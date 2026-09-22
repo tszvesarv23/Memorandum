@@ -1,0 +1,136 @@
+/**
+ * Sistema tipográfico editorial.
+ * Distingue: titulares, entradillas, cuerpo, metadatos,
+ * citas, documentos y navegación.
+ */
+
+/* Kicker / overline — sección sobre el titular */
+.kicker {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* Titulares */
+.headline {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: var(--leading-headline);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+
+.headline--hero {
+  font-size: var(--text-hero);
+  line-height: var(--leading-tight);
+}
+
+.headline--h1 {
+  font-size: var(--text-h1);
+}
+
+.headline--h2 {
+  font-size: var(--text-h2);
+}
+
+.headline--h3 {
+  font-size: var(--text-h3);
+}
+
+.headline--h4 {
+  font-size: var(--text-h4);
+}
+
+/* Entradilla / lead */
+.lede {
+  font-family: var(--font-display);
+  font-size: var(--text-lede);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+
+/* Cuerpo de artículo */
+.prose {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-text);
+}
+
+.prose > * + * {
+  margin-top: var(--space-5);
+}
+
+.prose h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: var(--leading-headline);
+  margin-top: var(--space-7);
+}
+
+.prose h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  font-weight: 600;
+  margin-top: var(--space-6);
+}
+
+.prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  color: var(--color-accent-hover);
+}
+
+.prose blockquote {
+  font-family: var(--font-display);
+  font-size: var(--text-lede);
+  font-style: italic;
+  line-height: 1.5;
+  padding-left: var(--space-5);
+  border-left: var(--border-rule) solid var(--color-accent);
+  color: var(--color-text-secondary);
+}
+
+.prose ul,
+.prose ol {
+  padding-left: var(--space-6);
+}
+
+.prose li + li {
+  margin-top: var(--space-2);
+}
+
+/* Metadatos: fecha, autor, tiempo de lectura */
+.meta {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-muted);
+}
+
+/* Texto de documentos / archivo */
+.document-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+/* Navegación */
+.nav-text {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: var(--tracking-ui);
+}

@@ -1,0 +1,52 @@
+/**
+ * Utilidades de layout — contenedores y filetes editoriales.
+ */
+
+.container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.container--article {
+  max-width: var(--content-article);
+}
+
+.container--wide {
+  max-width: var(--content-wide);
+}
+
+/* Filete editorial superior (marca de sección) */
+.rule-top {
+  border-top: var(--border-rule) solid var(--color-rule);
+  padding-top: var(--space-3);
+}
+
+/* Hairline */
+.hairline {
+  border: 0;
+  border-top: var(--border-thin) solid var(--color-border);
+}
+
+/* Animación de entrada discreta */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up var(--duration-slow) var(--ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    animation: none;
+  }
+}
