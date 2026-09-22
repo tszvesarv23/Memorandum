@@ -1,0 +1,374 @@
+/* Estilos compartidos del panel /admin — sobrio, denso, funcional */
+
+.shell {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 100vh;
+  font-family: var(--font-ui);
+}
+
+.sidebar {
+  background: var(--color-ink);
+  color: var(--color-text-inverse);
+  padding: var(--space-5) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  font-weight: 600;
+  color: var(--color-text-inverse);
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1;
+}
+
+.navLink {
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  padding: var(--space-2) var(--space-3);
+  border-left: 2px solid transparent;
+  opacity: 0.75;
+}
+
+.navLink:hover {
+  opacity: 1;
+  border-left-color: var(--color-accent);
+}
+
+.userBox {
+  font-size: var(--text-xs);
+  opacity: 0.7;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.logoutBtn {
+  background: none;
+  border: 1px solid currentColor;
+  color: inherit;
+  font: inherit;
+  font-size: var(--text-xs);
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  text-align: left;
+}
+
+.logoutBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.content {
+  padding: var(--space-6) var(--space-7);
+  max-width: 1100px;
+}
+
+.pageTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.pageDesc {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-6);
+}
+
+/* ── Login ── */
+.loginWrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+  font-family: var(--font-ui);
+}
+
+.loginCard {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  padding: var(--space-7);
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.loginTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 600;
+}
+
+/* ── Tablas ── */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.table th {
+  text-align: left;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+  color: var(--color-muted);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.table td {
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.table a {
+  color: var(--color-ink);
+}
+
+/* ── Formularios ── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 760px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.input,
+.textarea,
+.select {
+  font: inherit;
+  font-size: var(--text-sm);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  width: 100%;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -1px;
+}
+
+.fieldRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  padding: var(--space-2) var(--space-5);
+  border: 1px solid var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-text-inverse);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btnSecondary {
+  background: transparent;
+  color: var(--color-ink);
+}
+
+.btnDanger {
+  background: transparent;
+  color: #a33;
+  border-color: #a33;
+}
+
+.error {
+  color: #a33;
+  font-size: var(--text-sm);
+  padding: var(--space-3);
+  border: 1px solid #a33;
+  background: rgba(170, 51, 51, 0.06);
+}
+
+.notice {
+  font-size: var(--text-sm);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+/* ── Estado / badges admin ── */
+.statusBadge {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border: 1px solid var(--color-border);
+}
+
+.statusPublished { color: #1a6b3a; border-color: #1a6b3a; }
+.statusDraft { color: var(--color-muted); }
+.statusReview { color: #9a6a00; border-color: #9a6a00; }
+.statusArchived { color: #a33; border-color: #a33; }
+.statusScheduled { color: #3455a0; border-color: #3455a0; }
+
+/* ── Stats dashboard ── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.stat {
+  border: 1px solid var(--color-border);
+  padding: var(--space-4);
+}
+
+.statValue {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 600;
+}
+
+.statLabel {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+  color: var(--color-muted);
+}
+
+/* ── Editor Tiptap ── */
+.editor {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.toolbar {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.toolbarBtn {
+  font: inherit;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  min-width: 30px;
+}
+
+.toolbarBtn:hover {
+  border-color: var(--color-border);
+}
+
+.toolbarBtnActive {
+  background: var(--color-ink);
+  color: var(--color-text-inverse);
+}
+
+.editorBody {
+  padding: var(--space-4);
+  min-height: 320px;
+}
+
+.editorBody :global(.ProseMirror) {
+  outline: none;
+  font-family: var(--font-display);
+  font-size: var(--text-body);
+  line-height: 1.7;
+}
+
+.editorBody :global(.ProseMirror p) {
+  margin: 0 0 var(--space-3);
+}
+
+.editorBody :global(.ProseMirror blockquote) {
+  border-left: 3px solid var(--color-accent);
+  padding-left: var(--space-4);
+  margin: var(--space-4) 0;
+  font-style: italic;
+}
+
+/* ── Detalle submission ── */
+.meta {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.body {
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  white-space: pre-wrap;
+  border: 1px solid var(--color-border);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  margin: var(--space-4) 0;
+}
+
+.noteItem {
+  border-left: 3px solid var(--color-border);
+  padding: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.noteMeta {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  font-weight: 600;
+  margin: var(--space-6) 0 var(--space-3);
+}

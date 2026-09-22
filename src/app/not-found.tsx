@@ -1,57 +1,45 @@
 import Link from "next/link";
 
-export default function NotFound() {
+/**
+ * 404 raíz — para rutas que no coinciden con ningún segmento.
+ * Autocontenida: el root layout no incluye cabecera/pie.
+ */
+export default function RootNotFound() {
   return (
-    <div
-      className="container"
+    <main
       style={{
-        paddingBlock: "var(--space-8)",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "1rem",
+        fontFamily: "var(--font-ui, system-ui, sans-serif)",
         textAlign: "center",
+        padding: "2rem",
       }}
     >
-      <p
-        style={{
-          fontFamily: "var(--font-mono)",
-          fontSize: "var(--text-sm)",
-          color: "var(--color-muted)",
-          letterSpacing: "0.1em",
-        }}
-      >
-        404
+      <p style={{ fontSize: "0.8rem", letterSpacing: "0.15em", textTransform: "uppercase", opacity: 0.6 }}>
+        Error 404
       </p>
-      <h1
-        style={{
-          fontFamily: "var(--font-display)",
-          fontSize: "var(--text-h1)",
-          fontWeight: 700,
-          marginTop: "var(--space-3)",
-        }}
-      >
+      <h1 style={{ fontFamily: "var(--font-display, Georgia, serif)", fontSize: "2rem", margin: 0 }}>
         Página no encontrada
       </h1>
-      <p
-        style={{
-          fontFamily: "var(--font-ui)",
-          color: "var(--color-text-secondary)",
-          marginTop: "var(--space-4)",
-        }}
-      >
-        El contenido que buscas no existe o ha sido movido.
+      <p style={{ maxWidth: "40ch", opacity: 0.75 }}>
+        La dirección que buscas no existe o ha sido movida.
       </p>
       <Link
         href="/"
         style={{
-          display: "inline-block",
-          marginTop: "var(--space-6)",
-          padding: "var(--space-3) var(--space-5)",
-          fontFamily: "var(--font-ui)",
-          fontWeight: 600,
-          color: "var(--color-accent-contrast)",
-          background: "var(--color-ink)",
+          marginTop: "0.5rem",
+          padding: "0.6rem 1.4rem",
+          background: "var(--color-ink, #1a1a1a)",
+          color: "var(--color-text-inverse, #fff)",
+          textDecoration: "none",
         }}
       >
         Volver a la portada
       </Link>
-    </div>
+    </main>
   );
 }

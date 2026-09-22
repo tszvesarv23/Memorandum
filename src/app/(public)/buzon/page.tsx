@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs/Breadcrumbs";
+import { submitTipAction } from "@/server/actions/submissions";
+import { isDatabaseConfigured } from "@/db";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -10,10 +12,17 @@ export const metadata: Metadata = {
 
 /**
  * Buzón ciudadano — página informativa + formulario.
- * FASE 4: implementación completa con uploads firmados a R2,
- * Turnstile, sanitización de metadatos y cola de revisión.
+ * El envío persiste en `submissions` con IP solo como hash con sal
+ * (retención 72 h). FASE 4: uploads firmados a R2 + Turnstile.
  */
-export default function BuzonPage() {
+export default async function BuzonPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ estado?: string }>;
+}) {
+  const { estado } = await searchParams;
+  const canSubmit = isDatabaseConfigured;
+
   return (
     <div className="container">
       <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Buzón" }]} />
@@ -28,8 +37,20 @@ export default function BuzonPage() {
 
         <div className={styles.columns}>
           <div className={styles.main}>
-            {/* TODO(FASE 4): formulario funcional con uploads firmados */}
-            <form className={styles.form} action="/api/submissions" method="post">
+            {estado === "ok" ? (
+              <p className={styles.help} role="status">
+                <strong>Envío recibido.</strong> La redacción lo revisará antes
+                de cualquier uso o publicación. Gracias.
+              </p>
+            ) : null}
+            {estado === "error" ? (
+              <p className={styles.help} role="alert">
+                <strong>No se pudo enviar.</strong> Revisa la descripción
+                (mínimo 20 caracteres) e inténtalo de nuevo.
+              </p>
+            ) : null}
+            {/* TODO(FASE 4): uploads firmados a R2 + Turnstile */}
+            <form className={styles.form} action={submitTipAction}>
               <div className={styles.field}>
                 <label htmlFor="buzon-titulo" className={styles.label}>
                   Título <span className={styles.optional}>(opcional)</span>
@@ -138,12 +159,15 @@ export default function BuzonPage() {
                 </p>
               </div>
 
-              <button type="submit" className={styles.submit} disabled>
+              <button type="submit" className={styles.submit} disabled={!canSubmit}>
                 Enviar información
               </button>
-              <p className={styles.pending}>
-                El envío se habilitará cuando el canal seguro esté operativo.
-              </p>
+              {!canSubmit ? (
+                <p className={styles.pending}>
+                  El envío se habilitará cuando la base de datos esté
+                  configurada.
+                </p>
+              ) : null}
             </form>
           </div>
 

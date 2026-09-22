@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Newsreader } from "next/font/google";
-import { SiteFooter } from "@/components/SiteFooter/SiteFooter";
-import { SiteHeader } from "@/components/SiteHeader/SiteHeader";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -38,14 +36,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" className={`${newsreader.variable} ${inter.variable}`}>
-      <body>
-        <a href="#contenido" className="skip-link">
-          Saltar al contenido
-        </a>
-        <SiteHeader />
-        <main id="contenido">{children}</main>
-        <SiteFooter />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

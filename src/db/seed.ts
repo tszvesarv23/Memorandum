@@ -4,8 +4,9 @@
  * Requiere DATABASE_URL configurada.
  */
 import { db, isDatabaseConfigured } from "./index";
-import { articles, authors, categories } from "./schema";
+import { articles, authors, categories, users } from "./schema";
 import { demoArticles } from "@/server/demo-data";
+import { hashPassword } from "@/server/auth/password";
 
 const seedCategories = [
   { slug: "actualidad", name: "Actualidad", description: "Actualidad y política local de Ceuta." },
@@ -44,6 +45,30 @@ async function main() {
     .onConflictDoNothing()
     .returning();
   console.log(`  ${authorRows.length} autores insertados.`);
+
+  console.log("Sembrando usuario admin…");
+  const adminEmail = process.env.ADMIN_EMAIL ?? "admin@memorandum.local";
+  const adminPassword = process.env.ADMIN_PASSWORD ?? "Memorandum!2026";
+  const adminRows = await db
+    .insert(users)
+    .values({
+      email: adminEmail,
+      displayName: "Administrador",
+      passwordHash: await hashPassword(adminPassword),
+      role: "ADMIN",
+    })
+    .onConflictDoNothing()
+    .returning();
+  if (adminRows.length > 0) {
+    console.log(`  Admin creado: ${adminEmail}`);
+    if (!process.env.ADMIN_PASSWORD) {
+      console.warn(
+        "  ⚠ Contraseña por defecto 'Memorandum!2026' — cámbiala antes de producción.",
+      );
+    }
+  } else {
+    console.log("  El usuario admin ya existe, sin cambios.");
+  }
 
   const catBySlug = new Map(catRows.map((c) => [c.slug, c.id]));
   const authorBySlug = new Map(authorRows.map((a) => [a.slug, a.id]));
