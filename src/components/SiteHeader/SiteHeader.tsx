@@ -1,13 +1,19 @@
 import Link from "next/link";
+import { cookies } from "next/headers";
 import { mainNav, siteConfig, utilityNav } from "@/config/site";
+import { parseTheme } from "@/lib/theme";
 import { SearchBox } from "@/components/SearchBox/SearchBox";
+import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
 import styles from "./SiteHeader.module.css";
 
 /**
  * Cabecera editorial: marca, fecha, navegación de secciones
- * y acceso al buzón. Server Component — sin JS de cliente.
+ * y acceso al buzón. Server Component — carga el tema del usuario.
  */
-export function SiteHeader() {
+export async function SiteHeader() {
+  const cookieJar = await cookies();
+  const initialTheme = parseTheme(cookieJar.get("memorandum_theme")?.value);
+
   const today = new Intl.DateTimeFormat("es-ES", {
     weekday: "long",
     day: "numeric",
@@ -29,6 +35,7 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
+            <ThemeToggle initialTheme={initialTheme} />
           </nav>
         </div>
       </div>

@@ -28,7 +28,8 @@
 
 .utility {
   display: none;
-  gap: var(--space-4);
+  align-items: center;
+  gap: var(--space-3);
 }
 
 @media (min-width: 48rem) {

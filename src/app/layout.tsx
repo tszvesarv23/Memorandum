@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { Inter, Newsreader } from "next/font/google";
 import { siteConfig } from "@/config/site";
+import { parseTheme, themeInitScript } from "@/lib/theme";
 import "./globals.css";
 
 const newsreader = Newsreader({
@@ -31,11 +33,24 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const cookieJar = await cookies();
+  const theme = parseTheme(cookieJar.get("memorandum_theme")?.value);
+
   return (
-    <html lang="es" className={`${newsreader.variable} ${inter.variable}`}>
+    <html
+      lang="es"
+      data-theme={theme}
+      suppressHydrationWarning
+      className={`${newsreader.variable} ${inter.variable}`}
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{ __html: themeInitScript() }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
