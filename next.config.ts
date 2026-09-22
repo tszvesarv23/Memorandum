@@ -4,6 +4,8 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
+  // PGlite carga WASM/fs: no debe pasar por el bundler
+  serverExternalPackages: ["@electric-sql/pglite"],
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [

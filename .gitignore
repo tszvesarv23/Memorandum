@@ -30,3 +30,6 @@ test-results/
 
 # drizzle
 drizzle/meta/_journal.json.bak
+
+# datos locales de PGlite (Postgres embebido en dev)
+.data/
