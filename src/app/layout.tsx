@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { Inter, Newsreader } from "next/font/google";
 import { siteConfig } from "@/config/site";
-import { parseTheme, themeInitScript } from "@/lib/theme";
+import { parseTheme } from "@/lib/theme";
 import "./globals.css";
 
 const newsreader = Newsreader({
@@ -46,11 +46,6 @@ export default async function RootLayout({
       suppressHydrationWarning
       className={`${newsreader.variable} ${inter.variable}`}
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{ __html: themeInitScript() }}
-        />
-      </head>
       <body>{children}</body>
     </html>
   );
