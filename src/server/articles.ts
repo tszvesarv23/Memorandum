@@ -6,6 +6,7 @@ import type {
   ArticleCardData,
   ArticleDetailData,
   DocumentCardData,
+  MediaRef,
   TimelineEntryData,
 } from "@/types/editorial";
 
@@ -14,6 +15,17 @@ import type {
  * Cuando la base de datos no está configurada, degrada a
  * contenido de demostración marcado como tal.
  */
+
+function demoCover(slug: string, type: string, title: string): MediaRef {
+  const mono = type === "HISTORICAL" || type === "TIMELINE" || type === "DOCUMENT";
+  const query = mono ? "?grayscale" : "";
+  return {
+    src: `https://picsum.photos/seed/${encodeURIComponent(slug)}/1600/900${query}`,
+    alt: `Fotografía de acompañamiento: ${title}`,
+    caption: "Imagen de demostración para visualizar el tratamiento editorial.",
+    credit: "Picsum",
+  };
+}
 
 function toCard(row: {
   slug: string;
@@ -26,6 +38,17 @@ function toCard(row: {
   author: { slug: string; name: string; role: string | null } | null;
   cover: { storageKey: string; alt: string; caption: string | null; credit: string | null } | null;
 }): ArticleCardData {
+  const cover = row.cover
+    ? {
+        src: `/media/${row.cover.storageKey}`,
+        alt: row.cover.alt,
+        caption: row.cover.caption ?? undefined,
+        credit: row.cover.credit ?? undefined,
+      }
+    : row.isDemo
+      ? demoCover(row.slug, row.type, row.title)
+      : undefined;
+
   return {
     slug: row.slug,
     type: row.type as ArticleCardData["type"],
@@ -35,14 +58,7 @@ function toCard(row: {
     author: row.author
       ? { slug: row.author.slug, name: row.author.name, role: row.author.role ?? undefined }
       : undefined,
-    cover: row.cover
-      ? {
-          src: `/media/${row.cover.storageKey}`,
-          alt: row.cover.alt,
-          caption: row.cover.caption ?? undefined,
-          credit: row.cover.credit ?? undefined,
-        }
-      : undefined,
+    cover,
     publishedAt: (row.publishedAt ?? new Date()).toISOString(),
     isDemo: row.isDemo,
   };

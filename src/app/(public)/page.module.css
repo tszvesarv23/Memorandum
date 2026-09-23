@@ -1,24 +1,62 @@
-.editionRule {
-  margin-top: var(--space-6);
-  border: 0;
-  border-top: var(--border-rule) solid var(--color-rule);
+.home {
+  width: 100%;
 }
 
+/* ── Hero: imagen a ancho completo + texto contenido ──────── */
 .heroSection {
-  padding-top: var(--space-4);
+  width: 100%;
+  background: var(--color-surface);
+  border-bottom: var(--border-thin) solid var(--color-border);
 }
 
+.heroFigure {
+  margin: 0;
+  width: 100%;
+}
+
+.heroImage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: var(--color-surface-sunken);
+}
+
+@media (min-width: 64rem) {
+  .heroImage {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+.heroCaption {
+  display: block;
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding: var(--space-3) var(--gutter);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  line-height: 1.5;
+  border-bottom: var(--border-thin) solid var(--color-border);
+}
+
+.heroCredit {
+  font-style: italic;
+}
+
+/* ── Secciones comunes ───────────────────────────────────── */
 .section {
-  margin-top: var(--space-section);
+  width: 100%;
+  padding-block: var(--space-section);
+  border-bottom: var(--border-thin) solid var(--color-border);
 }
 
-/* Fila NOTICIA | ANÁLISIS con divisor vertical */
+/* ── Fila NOTICIA | ANÁLISIS ─────────────────────────────── */
 .splitRow {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-6);
-  padding-bottom: var(--space-section);
-  border-bottom: var(--border-thin) solid var(--color-border);
+  gap: var(--space-7);
 }
 
 @media (min-width: 64rem) {
@@ -28,11 +66,11 @@
   }
 
   .splitRow > :first-child {
-    padding-right: var(--space-6);
+    padding-right: var(--space-7);
   }
 
   .splitRow > :last-child {
-    padding-left: var(--space-6);
+    padding-left: var(--space-7);
     border-left: var(--border-thin) solid var(--color-border);
   }
 }
@@ -47,57 +85,55 @@
   margin-bottom: var(--space-3);
 }
 
-/* Últimas informaciones + Ceuta ahora */
+/* ── Dos columnas (últimas + Ceuta) ──────────────────────── */
 .twoCol {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-7);
+  gap: var(--space-8);
 }
 
 @media (min-width: 64rem) {
   .twoCol {
     grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-9);
   }
 }
 
-/* Investigación: un artículo grande + listado */
+/* ── Investigación: destacado + listado ──────────────────── */
 .investigationLayout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-6);
-}
-
-@media (min-width: 64rem) {
-  .investigationLayout {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 3fr);
-    gap: 0;
-  }
-
-  .investigationLayout > :first-child {
-    padding-right: var(--space-6);
-  }
-
-  .investigationLayout > :last-child {
-    padding-left: var(--space-6);
-    border-left: var(--border-thin) solid var(--color-border);
-  }
-}
-
-/* Historia + documentos */
-.archiveLayout {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-7);
 }
 
 @media (min-width: 64rem) {
+  .investigationLayout {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 3fr);
+    gap: var(--space-8);
+  }
+
+  .investigationLayout > :last-child {
+    padding-left: var(--space-7);
+    border-left: var(--border-thin) solid var(--color-border);
+  }
+}
+
+/* ── Historia + documentos ───────────────────────────────── */
+.archiveLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 64rem) {
   .archiveLayout {
     grid-template-columns: minmax(0, 5fr) minmax(0, 3fr);
+    gap: var(--space-9);
   }
 }
 
 .timelineBlock {
-  margin-top: var(--space-7);
+  margin-top: var(--space-8);
 }
 
 .subTitle {
@@ -116,10 +152,11 @@
   gap: var(--space-4);
 }
 
-/* Buzón */
+/* ── Buzón ───────────────────────────────────────────────── */
 .ctaSection {
-  margin-top: var(--space-section);
-  padding-block: var(--space-7);
+  width: 100%;
+  padding-block: var(--space-section);
   border-top: var(--border-rule) solid var(--color-rule);
   border-bottom: var(--border-rule) solid var(--color-rule);
+  background: var(--color-surface);
 }

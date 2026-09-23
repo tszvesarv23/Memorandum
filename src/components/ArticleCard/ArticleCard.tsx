@@ -68,7 +68,6 @@ export function ArticleCard({
         <div className={styles.footer}>
           {article.author && <span className={styles.author}>{article.author.name}</span>}
           <DateDisplay iso={article.publishedAt} />
-          {article.isDemo && <span className={styles.demo}>Contenido de demostración</span>}
         </div>
       </div>
     </article>

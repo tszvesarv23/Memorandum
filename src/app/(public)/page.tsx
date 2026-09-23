@@ -16,7 +16,7 @@ import {
 import styles from "./page.module.css";
 
 /**
- * Portada editorial.
+ * Portada editorial — composición de ancho completo.
  * Jerarquía: hero prominente → noticia + análisis → últimas/Ceuta →
  * investigación → historia/documentos → buzón → newsletter.
  */
@@ -39,90 +39,122 @@ export default async function HomePage() {
   const investigationRest = investigation.slice(1, 4);
 
   return (
-    <div className="container">
-      <hr className={styles.editionRule} />
-
-      {hero && (
-        <section aria-label="Noticia principal" className={styles.heroSection}>
-          <ArticleHero article={hero} />
+    <main className={styles.home}>
+      {hero && hero.cover && (
+        <section className={styles.heroSection} aria-label="Noticia principal">
+          <figure className={styles.heroFigure}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={hero.cover.src}
+              alt={hero.cover.alt}
+              className={styles.heroImage}
+              fetchPriority="high"
+              decoding="async"
+            />
+            {(hero.cover.caption ?? hero.cover.credit) && (
+              <figcaption className={styles.heroCaption}>
+                {hero.cover.caption}
+                {hero.cover.credit && (
+                  <span className={styles.heroCredit}> · {hero.cover.credit}</span>
+                )}
+              </figcaption>
+            )}
+          </figure>
+          <div className="container">
+            <ArticleHero article={hero} />
+          </div>
         </section>
       )}
 
       {/* NOTICIA | ANÁLISIS */}
-      <section aria-label="Noticia y análisis" className={styles.splitRow}>
-        <article>
-          {mainNews && (
-            <>
-              <p className={styles.splitLabel}>Noticia</p>
-              <ArticleCard article={mainNews} variant="headline" showImage={false} />
-            </>
-          )}
-        </article>
-        <article>
-          {mainAnalysis && (
-            <>
-              <p className={styles.splitLabel}>Análisis</p>
-              <ArticleCard article={mainAnalysis} variant="headline" showImage={false} />
-            </>
-          )}
-        </article>
+      <section className={styles.section} aria-label="Noticia y análisis">
+        <div className="container">
+          <div className={styles.splitRow}>
+            <article>
+              {mainNews && (
+                <>
+                  <p className={styles.splitLabel}>Noticia</p>
+                  <ArticleCard article={mainNews} variant="headline" showImage={false} />
+                </>
+              )}
+            </article>
+            <article>
+              {mainAnalysis && (
+                <>
+                  <p className={styles.splitLabel}>Análisis</p>
+                  <ArticleCard article={mainAnalysis} variant="headline" showImage={false} />
+                </>
+              )}
+            </article>
+          </div>
+        </div>
       </section>
 
       {/* ÚLTIMAS INFORMACIONES + Ceuta ahora */}
-      <section className={styles.twoCol}>
-        <div>
-          <SectionHeader title="Últimas informaciones" href="/actualidad" />
-          <ArticleList articles={latest} layout="stack" />
+      <section className={styles.section}>
+        <div className="container">
+          <div className={styles.twoCol}>
+            <div>
+              <SectionHeader title="Últimas informaciones" href="/actualidad" />
+              <ArticleList articles={latest} layout="stack" />
+            </div>
+            <aside aria-label="Ceuta ahora">
+              <SectionHeader title="Ceuta ahora" href="/actualidad" />
+              <ArticleList articles={ceuta} layout="stack" />
+            </aside>
+          </div>
         </div>
-        <aside aria-label="Ceuta ahora">
-          <SectionHeader title="Ceuta ahora" href="/actualidad" />
-          <ArticleList articles={ceuta} layout="stack" />
-        </aside>
       </section>
 
       {/* INVESTIGACIÓN */}
       <section className={styles.section}>
-        <SectionHeader title="Investigación" href="/investigacion" />
-        <div className={styles.investigationLayout}>
-          <div>
-            {mainInvestigation && (
-              <ArticleCard article={mainInvestigation} variant="headline" />
-            )}
-          </div>
-          <div>
-            <ArticleList articles={investigationRest} layout="stack" />
+        <div className="container">
+          <SectionHeader title="Investigación" href="/investigacion" />
+          <div className={styles.investigationLayout}>
+            <div>
+              {mainInvestigation && (
+                <ArticleCard article={mainInvestigation} variant="headline" />
+              )}
+            </div>
+            <div>
+              <ArticleList articles={investigationRest} layout="stack" />
+            </div>
           </div>
         </div>
       </section>
 
       {/* HISTORIA / ARCHIVO + Documentos */}
       <section className={styles.section}>
-        <div className={styles.archiveLayout}>
-          <div>
-            <SectionHeader title="Historia / Revisión" href="/historia" />
-            <ArticleList articles={history} layout="stack" />
-            <div className={styles.timelineBlock}>
-              <h3 className={styles.subTitle}>Cronología destacada</h3>
-              <Timeline entries={timeline} />
+        <div className="container">
+          <div className={styles.archiveLayout}>
+            <div>
+              <SectionHeader title="Historia / Revisión" href="/historia" />
+              <ArticleList articles={history} layout="stack" />
+              <div className={styles.timelineBlock}>
+                <h3 className={styles.subTitle}>Cronología destacada</h3>
+                <Timeline entries={timeline} />
+              </div>
             </div>
+            <aside aria-label="Documentos">
+              <SectionHeader title="Documentos" href="/documentos" />
+              <div className={styles.docList}>
+                {documents.map((d) => (
+                  <DocumentCard key={d.slug} document={d} />
+                ))}
+              </div>
+            </aside>
           </div>
-          <aside aria-label="Documentos">
-            <SectionHeader title="Documentos" href="/documentos" />
-            <div className={styles.docList}>
-              {documents.map((d) => (
-                <DocumentCard key={d.slug} document={d} />
-              ))}
-            </div>
-          </aside>
         </div>
       </section>
 
       {/* Buzón ciudadano */}
       <section className={styles.ctaSection} aria-label="Buzón ciudadano">
-        <CitizenSubmissionCTA />
+        <div className="container">
+          <CitizenSubmissionCTA />
+        </div>
       </section>
 
       <Newsletter />
-    </div>
+    </main>
   );
 }
