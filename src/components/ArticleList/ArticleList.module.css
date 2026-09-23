@@ -21,6 +21,6 @@
   flex-direction: column;
 }
 
-.stack > :last-child {
+.stack > article {
   border-bottom: var(--border-thin) solid var(--color-border);
 }

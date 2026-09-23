@@ -17,93 +17,108 @@ import styles from "./page.module.css";
 
 /**
  * Portada editorial.
- * Jerarquía: hero → secundarias → última hora + Ceuta ahora →
- * análisis/investigación → historia + documentos → buzón → newsletter.
+ * Jerarquía: hero prominente → noticia + análisis → últimas/Ceuta →
+ * investigación → historia/documentos → buzón → newsletter.
  */
 export default async function HomePage() {
-  const [all, ceuta, analysis, investigation, history, documents, timeline] =
+  const [all, ceuta, investigation, history, documents, timeline] =
     await Promise.all([
       getPublishedArticles(20),
-      getArticlesByCategory("actualidad", 5),
-      getArticlesByType("ANALYSIS", 3),
-      getArticlesByType("INVESTIGATION", 3),
-      getArticlesByType("HISTORICAL", 3),
+      getArticlesByCategory("actualidad", 6),
+      getArticlesByType("INVESTIGATION", 4),
+      getArticlesByType("HISTORICAL", 4),
       getFeaturedDocuments(3),
       getTimelinePreview(),
     ]);
 
   const [hero, ...rest] = all;
-  const secondary = rest.slice(0, 3);
-  const latest = rest.slice(3, 9);
-  const opinion = all.find((a) => a.type === "OPINION");
+  const latest = rest.slice(0, 6);
+  const mainNews = all.find((a) => a.type === "NEWS") ?? rest[0];
+  const mainAnalysis = all.find((a) => a.type === "ANALYSIS");
+  const mainInvestigation = investigation[0];
+  const investigationRest = investigation.slice(1, 4);
 
   return (
     <div className="container">
+      <hr className={styles.editionRule} />
+
       {hero && (
         <section aria-label="Noticia principal" className={styles.heroSection}>
           <ArticleHero article={hero} />
         </section>
       )}
 
-      {/* Secundarias */}
-      <section aria-label="Noticias destacadas" className={styles.section}>
-        <div className={styles.secondaryGrid}>
-          {secondary.map((a) => (
-            <ArticleCard key={a.slug} article={a} variant="headline" />
-          ))}
-        </div>
+      {/* NOTICIA | ANÁLISIS */}
+      <section aria-label="Noticia y análisis" className={styles.splitRow}>
+        <article>
+          {mainNews && (
+            <>
+              <p className={styles.splitLabel}>Noticia</p>
+              <ArticleCard article={mainNews} variant="headline" showImage={false} />
+            </>
+          )}
+        </article>
+        <article>
+          {mainAnalysis && (
+            <>
+              <p className={styles.splitLabel}>Análisis</p>
+              <ArticleCard article={mainAnalysis} variant="headline" showImage={false} />
+            </>
+          )}
+        </article>
       </section>
 
-      {/* Última hora + Ceuta ahora */}
-      <section className={`${styles.section} ${styles.twoCol}`}>
+      {/* ÚLTIMAS INFORMACIONES + Ceuta ahora */}
+      <section className={styles.twoCol}>
         <div>
-          <SectionHeader title="Últimas noticias" href="/actualidad" />
+          <SectionHeader title="Últimas informaciones" href="/actualidad" />
           <ArticleList articles={latest} layout="stack" />
         </div>
         <aside aria-label="Ceuta ahora">
           <SectionHeader title="Ceuta ahora" href="/actualidad" />
           <ArticleList articles={ceuta} layout="stack" />
-          {opinion && (
-            <div className={styles.opinionBlock}>
-              <p className={styles.opinionLabel}>Opinión</p>
-              <ArticleCard article={opinion} variant="compact" />
-            </div>
-          )}
         </aside>
       </section>
 
-      {/* Análisis e investigación */}
+      {/* INVESTIGACIÓN */}
       <section className={styles.section}>
-        <SectionHeader title="Análisis e investigación" href="/investigacion" />
-        <div className={styles.analysisGrid}>
-          {[...analysis, ...investigation].slice(0, 4).map((a) => (
-            <ArticleCard key={a.slug} article={a} />
-          ))}
+        <SectionHeader title="Investigación" href="/investigacion" />
+        <div className={styles.investigationLayout}>
+          <div>
+            {mainInvestigation && (
+              <ArticleCard article={mainInvestigation} variant="headline" />
+            )}
+          </div>
+          <div>
+            <ArticleList articles={investigationRest} layout="stack" />
+          </div>
         </div>
       </section>
 
-      {/* Historia / Revisión + Documentos */}
-      <section className={`${styles.section} ${styles.twoCol}`}>
-        <div>
-          <SectionHeader title="Historia / Revisión" href="/historia" />
-          <ArticleList articles={history} layout="stack" />
-          <div className={styles.timelineBlock}>
-            <h3 className={styles.subTitle}>Cronología destacada</h3>
-            <Timeline entries={timeline} />
+      {/* HISTORIA / ARCHIVO + Documentos */}
+      <section className={styles.section}>
+        <div className={styles.archiveLayout}>
+          <div>
+            <SectionHeader title="Historia / Revisión" href="/historia" />
+            <ArticleList articles={history} layout="stack" />
+            <div className={styles.timelineBlock}>
+              <h3 className={styles.subTitle}>Cronología destacada</h3>
+              <Timeline entries={timeline} />
+            </div>
           </div>
+          <aside aria-label="Documentos">
+            <SectionHeader title="Documentos" href="/documentos" />
+            <div className={styles.docList}>
+              {documents.map((d) => (
+                <DocumentCard key={d.slug} document={d} />
+              ))}
+            </div>
+          </aside>
         </div>
-        <aside aria-label="Documentos">
-          <SectionHeader title="Documentos" href="/documentos" />
-          <div className={styles.docList}>
-            {documents.map((d) => (
-              <DocumentCard key={d.slug} document={d} />
-            ))}
-          </div>
-        </aside>
       </section>
 
       {/* Buzón ciudadano */}
-      <section className={styles.section} aria-label="Buzón ciudadano">
+      <section className={styles.ctaSection} aria-label="Buzón ciudadano">
         <CitizenSubmissionCTA />
       </section>
 

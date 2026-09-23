@@ -1,29 +1,53 @@
+.editionRule {
+  margin-top: var(--space-6);
+  border: 0;
+  border-top: var(--border-rule) solid var(--color-rule);
+}
+
 .heroSection {
-  padding-top: var(--space-6);
+  padding-top: var(--space-4);
 }
 
 .section {
   margin-top: var(--space-section);
 }
 
-.secondaryGrid {
+/* Fila NOTICIA | ANÁLISIS con divisor vertical */
+.splitRow {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-6);
-  padding-top: var(--space-6);
+  padding-bottom: var(--space-section);
+  border-bottom: var(--border-thin) solid var(--color-border);
 }
 
-@media (min-width: 48rem) {
-  .secondaryGrid {
-    grid-template-columns: repeat(3, 1fr);
+@media (min-width: 64rem) {
+  .splitRow {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0;
   }
 
-  .secondaryGrid > * + * {
-    border-left: var(--border-thin) solid var(--color-border);
+  .splitRow > :first-child {
+    padding-right: var(--space-6);
+  }
+
+  .splitRow > :last-child {
     padding-left: var(--space-6);
+    border-left: var(--border-thin) solid var(--color-border);
   }
 }
 
+.splitLabel {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
+}
+
+/* Últimas informaciones + Ceuta ahora */
 .twoCol {
   display: grid;
   grid-template-columns: 1fr;
@@ -32,43 +56,44 @@
 
 @media (min-width: 64rem) {
   .twoCol {
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
   }
 }
 
-.analysisGrid {
+/* Investigación: un artículo grande + listado */
+.investigationLayout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-6) var(--space-5);
-}
-
-@media (min-width: 40rem) {
-  .analysisGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  gap: var(--space-6);
 }
 
 @media (min-width: 64rem) {
-  .analysisGrid {
-    grid-template-columns: repeat(4, 1fr);
+  .investigationLayout {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 3fr);
+    gap: 0;
+  }
+
+  .investigationLayout > :first-child {
+    padding-right: var(--space-6);
+  }
+
+  .investigationLayout > :last-child {
+    padding-left: var(--space-6);
+    border-left: var(--border-thin) solid var(--color-border);
   }
 }
 
-.opinionBlock {
-  margin-top: var(--space-6);
-  padding: var(--space-4);
-  background: var(--color-accent-subtle);
-  border: var(--border-thin) solid var(--color-border);
+/* Historia + documentos */
+.archiveLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-7);
 }
 
-.opinionLabel {
-  font-family: var(--font-ui);
-  font-size: var(--text-xs);
-  font-weight: 700;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin-bottom: var(--space-2);
+@media (min-width: 64rem) {
+  .archiveLayout {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 3fr);
+  }
 }
 
 .timelineBlock {
@@ -89,4 +114,12 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+}
+
+/* Buzón */
+.ctaSection {
+  margin-top: var(--space-section);
+  padding-block: var(--space-7);
+  border-top: var(--border-rule) solid var(--color-rule);
+  border-bottom: var(--border-rule) solid var(--color-rule);
 }
