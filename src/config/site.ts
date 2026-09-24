@@ -19,6 +19,7 @@ export interface NavSection {
 
 /** Navegación principal — orden editorial, no alfabético */
 export const mainNav: readonly NavSection[] = [
+  { slug: "inicio", label: "Inicio", href: "/" },
   { slug: "actualidad", label: "Actualidad", href: "/actualidad" },
   { slug: "espana", label: "España", href: "/espana" },
   { slug: "mundo", label: "Mundo", href: "/mundo" },
