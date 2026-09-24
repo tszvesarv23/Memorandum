@@ -17,10 +17,9 @@ export default function HomePage() {
     <main className={styles.landing}>
       <div className="container">
         <header className={styles.landingHeader}>
-          <h1 className={styles.landingTitle}>Memorandum</h1>
-          <p className={styles.landingLede}>
+          <h1 className={styles.landingLede}>
             Documentar el presente para que pueda ser consultado en el futuro.
-          </p>
+          </h1>
         </header>
 
         <section className={styles.landingBody} aria-label="Descripción del proyecto">
