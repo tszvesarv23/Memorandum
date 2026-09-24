@@ -85,18 +85,61 @@
   margin-bottom: var(--space-3);
 }
 
-/* ── Dos columnas (últimas + Ceuta) ──────────────────────── */
-.twoCol {
+/* ── Actualidad: manifesto a la izquierda + noticias ─────── */
+.actualidadGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-8);
+  gap: var(--space-7);
 }
 
 @media (min-width: 64rem) {
-  .twoCol {
-    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
-    gap: var(--space-9);
+  .actualidadGrid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 0;
   }
+
+  .manifesto {
+    padding-right: var(--space-7);
+    border-right: var(--border-thin) solid var(--color-border);
+  }
+
+  .actualidadFeed {
+    padding-left: var(--space-7);
+  }
+}
+
+.manifestoTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-3);
+}
+
+.manifestoLede {
+  font-family: var(--font-display);
+  font-size: var(--text-lede);
+  font-weight: 500;
+  line-height: 1.42;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-5);
+  text-wrap: pretty;
+}
+
+.manifestoBody {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.62;
+  color: var(--color-text);
+  max-width: 50ch;
+}
+
+.manifestoBody p {
+  margin: 0 0 var(--space-4) 0;
+}
+
+.manifestoBody p:last-child {
+  margin-bottom: 0;
 }
 
 /* ── Investigación: destacado + listado ──────────────────── */

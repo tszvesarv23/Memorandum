@@ -90,19 +90,57 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ÚLTIMAS INFORMACIONES + Ceuta ahora */}
-      <section className={styles.section}>
+      {/* MEMORANDUM | ACTUALIDAD */}
+      <section className={styles.section} aria-labelledby="actualidad-heading">
         <div className="container">
-          <div className={styles.twoCol}>
-            <div>
-              <SectionHeader title="Últimas informaciones" href="/actualidad" />
+          <div className={styles.actualidadGrid}>
+            <aside className={styles.manifesto} aria-label="Sobre Memorandum">
+              <h2 className={styles.manifestoTitle}>Memorandum</h2>
+              <p className={styles.manifestoLede}>
+                Documentar el presente para que pueda ser consultado en el futuro.
+              </p>
+              <div className={styles.manifestoBody}>
+                <p>
+                  Memorandum es una iniciativa informativa independiente dedicada a contar
+                  lo que sucede en España: la actualidad política, nacional e internacional,
+                  con una mirada particular en Ceuta, su condición de ciudad de frontera y
+                  su lugar en el conjunto del país.
+                </p>
+                <p>
+                  No somos un simple agregador de noticias. Construimos un archivo vivo de
+                  acontecimientos: reportajes, investigaciones documentadas, análisis
+                  rigurosos, testimonios ciudadanos y revisiones históricas que permanezcan
+                  disponibles para quienes quieran consultarlos con el tiempo.
+                </p>
+                <p>
+                  También somos una plataforma ciudadana. Cualquier persona puede enviarnos
+                  información sobre sucesos, aportar fotografías, vídeos o documentos, e
+                  incluso proponer reportajes libres sobre aquello que considere que debe ser
+                  documentado. No exigimos identificación obligatoria: quien lo desee puede
+                  colaborar de forma anónima, siempre dentro de los límites legales y
+                  éticos que garantizan la veracidad y la responsabilidad de lo publicado.
+                </p>
+                <p>
+                  Cada aporte se revisa, verifica y trata con las mismas reglas
+                  periodísticas que el resto de nuestro contenido. La información ciudadana
+                  no se publica automáticamente: pasa por un proceso de comprobación antes de
+                  formar parte del registro.
+                </p>
+              </div>
+            </aside>
+            <div className={styles.actualidadFeed}>
+              <SectionHeader title="Actualidad" href="/actualidad" />
               <ArticleList articles={latest} layout="stack" />
             </div>
-            <aside aria-label="Ceuta ahora">
-              <SectionHeader title="Ceuta ahora" href="/actualidad" />
-              <ArticleList articles={ceuta} layout="stack" />
-            </aside>
           </div>
+        </div>
+      </section>
+
+      {/* CEUTA AHORA */}
+      <section className={styles.section} aria-label="Ceuta ahora">
+        <div className="container">
+          <SectionHeader title="Ceuta ahora" href="/actualidad" />
+          <ArticleList articles={ceuta} layout="stack" />
         </div>
       </section>
 
