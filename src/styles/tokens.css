@@ -5,22 +5,22 @@
  */
 
 :root {
-  /* ── Color: superficies ─────────────────────────────────── */
-  --color-background: #f5f3ee; /* papel cálido principal */
-  --color-surface: #faf9f6;    /* superficie elevada */
-  --color-surface-sunken: #edeae2;
+  /* ── Color: superficies corporativas ────────────────────── */
+  --color-background: #ffffff;
+  --color-surface: #f7f7f7;
+  --color-surface-sunken: #ededed;
 
   /* ── Color: texto ───────────────────────────────────────── */
-  --color-ink: #171715;
-  --color-text: #171715;
-  --color-text-secondary: #4f4c44;
-  --color-muted: #716f69;
-  --color-text-inverse: #faf9f6;
+  --color-ink: #111111;
+  --color-text: #111111;
+  --color-text-secondary: #4a4a4a;
+  --color-muted: #6b6b6b;
+  --color-text-inverse: #ffffff;
 
   /* ── Color: líneas y bordes ─────────────────────────────── */
-  --color-border: #d5d1c8;
-  --color-border-strong: #b9b4a8;
-  --color-rule: #171715;
+  --color-border: #e0e0e0;
+  --color-border-strong: #b0b0b0;
+  --color-rule: #111111;
 
   /* ── Color: identidad ───────────────────────────────────── */
   --color-primary: #183c43;     /* azul petróleo oscuro */
@@ -42,9 +42,9 @@
   --color-info: #183c43;
   --color-info-subtle: #e5eef0;
 
-  /* ── Tipografía ─────────────────────────────────────────── */
-  --font-display: var(--font-newsreader), "Georgia", "Times New Roman", serif;
-  --font-body: var(--font-newsreader), "Georgia", serif;
+  /* ── Tipografía corporativa moderna (sans) ──────────────── */
+  --font-display: var(--font-inter), -apple-system, "Segoe UI", sans-serif;
+  --font-body: var(--font-inter), -apple-system, "Segoe UI", sans-serif;
   --font-ui: var(--font-inter), -apple-system, "Segoe UI", sans-serif;
   --font-mono: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
 

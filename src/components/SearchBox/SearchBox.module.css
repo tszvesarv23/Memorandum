@@ -3,7 +3,9 @@
   align-items: center;
   border: var(--border-thin) solid var(--color-border);
   background: var(--color-surface);
+  border-radius: var(--radius-md);
   min-width: 0;
+  overflow: hidden;
 }
 
 .input {

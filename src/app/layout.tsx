@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
-import { Inter, Newsreader } from "next/font/google";
+import { Inter } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import { parseTheme } from "@/lib/theme";
 import "./globals.css";
-
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  variable: "--font-newsreader",
-  display: "swap",
-  style: ["normal", "italic"],
-});
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,7 +37,7 @@ export default async function RootLayout({
       lang="es"
       data-theme={theme}
       suppressHydrationWarning
-      className={`${newsreader.variable} ${inter.variable}`}
+      className={inter.variable}
     >
       <body>{children}</body>
     </html>

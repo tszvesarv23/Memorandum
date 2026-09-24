@@ -23,17 +23,34 @@ export function ArticleCard({
   const href = articleHref(article);
 
   if (variant === "compact") {
+    const hasImage = showImage && article.cover;
     return (
-      <article className={styles.compact}>
-        <div className={styles.compactMeta}>
-          <Badge type={article.type} />
-          <DateDisplay iso={article.publishedAt} relative />
+      <article
+        className={`${styles.compact} ${!hasImage ? styles.compactNoImage : ""}`}
+      >
+        {hasImage && (
+          <figure className={styles.compactFigure}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={article.cover!.src}
+              alt={article.cover!.alt}
+              className={styles.compactImage}
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        )}
+        <div>
+          <div className={styles.compactMeta}>
+            <Badge type={article.type} />
+            <DateDisplay iso={article.publishedAt} relative />
+          </div>
+          <h3 className={styles.compactTitle}>
+            <Link href={href} className={styles.stretched}>
+              {article.title}
+            </Link>
+          </h3>
         </div>
-        <h3 className={styles.compactTitle}>
-          <Link href={href} className={styles.stretched}>
-            {article.title}
-          </Link>
-        </h3>
       </article>
     );
   }
