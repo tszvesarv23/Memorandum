@@ -36,15 +36,26 @@ export async function SiteHeader() {
           </Link>
 
           <nav aria-label="Secciones" className={styles.nav}>
-            <ul className={styles.navList} role="list">
-              {mainNav.map((item) => (
-                <li key={item.slug}>
-                  <Link href={item.href} className={styles.navLink}>
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div className={styles.navTrack}>
+              <ul className={styles.navList} role="list">
+                {mainNav.map((item) => (
+                  <li key={item.slug}>
+                    <Link href={item.href} className={styles.navLink}>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <ul className={styles.navList} role="list" aria-hidden="true">
+                {mainNav.map((item) => (
+                  <li key={item.slug}>
+                    <Link href={item.href} className={styles.navLink} tabIndex={-1}>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </nav>
 
           <div className={styles.actions}>
