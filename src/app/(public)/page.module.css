@@ -143,6 +143,77 @@
   margin-bottom: var(--space-6);
 }
 
+/* ── Áreas de trabajo: carrusel horizontal corporativo ───── */
+.areas {
+  width: 100%;
+  padding-block: var(--space-section);
+  background: var(--color-primary-subtle);
+  border-bottom: var(--border-thin) solid var(--color-border);
+}
+
+.areasTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+}
+
+.areasGrid {
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--space-2);
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.areasGrid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.areasGrid::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: var(--radius-md);
+}
+
+.areaCard {
+  flex: 0 0 16rem;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  background: var(--color-background);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.areaCard:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+}
+
+.areaTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.areaText {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
 /* ── Barra de suscripción tipo agencia ───────────────────── */
 .subscribe {
   width: 100%;

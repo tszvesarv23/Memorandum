@@ -23,7 +23,7 @@ export async function SectionPage({ slug, title, description }: SectionPageProps
         <p className={styles.description}>{description}</p>
       </header>
       {articles.length > 0 ? (
-        <ArticleList articles={articles} />
+        <ArticleList articles={articles} layout="scroll" />
       ) : (
         <p className={styles.empty}>
           Todavía no hay contenido publicado en esta sección.

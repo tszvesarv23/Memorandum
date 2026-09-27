@@ -109,8 +109,9 @@
   font-family: var(--font-ui);
   font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--color-accent-contrast);
-  background: var(--color-ink);
+  color: var(--color-text-inverse);
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
   transition: background var(--duration-fast) var(--ease-out);
 }
 
@@ -138,8 +139,9 @@
 
 .note {
   padding: var(--space-5);
-  background: var(--color-surface-sunken);
+  background: var(--color-surface);
   border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-md);
 }
 
 .noteTitle {

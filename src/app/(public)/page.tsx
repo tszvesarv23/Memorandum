@@ -86,6 +86,53 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Áreas de trabajo: tarjetas corporativas */}
+      <section className={styles.areas} aria-labelledby="areas-title">
+        <div className="container">
+          <h2 id="areas-title" className={styles.areasTitle}>
+            Áreas de trabajo
+          </h2>
+          <div className={styles.areasGrid}>
+            <Link href="/actualidad" className={styles.areaCard}>
+              <h3 className={styles.areaTitle}>Actualidad</h3>
+              <p className={styles.areaText}>
+                Lo que ocurre ahora en Ceuta, España y el mundo.
+              </p>
+            </Link>
+            <Link href="/espana" className={styles.areaCard}>
+              <h3 className={styles.areaTitle}>España</h3>
+              <p className={styles.areaText}>
+                Política nacional, instituciones y actualidad del Gobierno.
+              </p>
+            </Link>
+            <Link href="/mundo" className={styles.areaCard}>
+              <h3 className={styles.areaTitle}>Mundo</h3>
+              <p className={styles.areaText}>
+                Acontecimientos internacionales relevantes.
+              </p>
+            </Link>
+            <Link href="/investigacion" className={styles.areaCard}>
+              <h3 className={styles.areaTitle}>Investigación</h3>
+              <p className={styles.areaText}>
+                Reportajes documentados, análisis y revisión de fuentes.
+              </p>
+            </Link>
+            <Link href="/historia" className={styles.areaCard}>
+              <h3 className={styles.areaTitle}>Historia</h3>
+              <p className={styles.areaText}>
+                El presente también tiene archivo: cronologías y documentos.
+              </p>
+            </Link>
+            <Link href="/documentos" className={styles.areaCard}>
+              <h3 className={styles.areaTitle}>Documentos</h3>
+              <p className={styles.areaText}>
+                Archivo documental con acceso a fuentes primarias.
+              </p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Barra de suscripción */}
       <section className={styles.subscribe} aria-label="Suscripción al boletín">
         <div className="container">

@@ -17,6 +17,7 @@
 .image {
   width: 100%;
   background: var(--color-surface-sunken);
+  border-radius: var(--radius-md);
 }
 
 .caption {

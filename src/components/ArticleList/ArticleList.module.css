@@ -24,3 +24,28 @@
 .stack > article {
   border-bottom: var(--border-thin) solid var(--color-border);
 }
+
+/* Carrusel horizontal de tarjetas */
+.scroll {
+  display: flex;
+  gap: var(--space-5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--space-3);
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: var(--radius-md);
+}
+
+.scroll > article {
+  flex: 0 0 18rem;
+  scroll-snap-align: start;
+}

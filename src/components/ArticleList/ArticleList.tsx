@@ -4,8 +4,8 @@ import styles from "./ArticleList.module.css";
 
 interface ArticleListProps {
   articles: ArticleCardData[];
-  /** grid: tarjetas en columnas; stack: filas compactas */
-  layout?: "grid" | "stack";
+  /** grid: tarjetas en columnas; stack: filas compactas; scroll: carrusel horizontal */
+  layout?: "grid" | "stack" | "scroll";
 }
 
 export function ArticleList({ articles, layout = "grid" }: ArticleListProps) {
@@ -16,6 +16,16 @@ export function ArticleList({ articles, layout = "grid" }: ArticleListProps) {
       <div className={styles.stack} role="list">
         {articles.map((a) => (
           <ArticleCard key={a.slug} article={a} variant="compact" />
+        ))}
+      </div>
+    );
+  }
+
+  if (layout === "scroll") {
+    return (
+      <div className={styles.scroll} role="list">
+        {articles.map((a) => (
+          <ArticleCard key={a.slug} article={a} />
         ))}
       </div>
     );
