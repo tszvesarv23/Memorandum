@@ -25,6 +25,7 @@
   height: 80px;
   width: auto;
   max-width: none;
+  transform: translateY(-4px);
 }
 
 .nav {
