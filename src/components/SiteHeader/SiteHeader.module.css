@@ -11,7 +11,7 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: var(--space-5);
-  min-height: 8rem;
+  min-height: 9rem;
 }
 
 .brand {
@@ -22,7 +22,7 @@
 
 .logo {
   display: block;
-  height: 78px;
+  height: 88px;
   width: auto;
   max-width: none;
 }
