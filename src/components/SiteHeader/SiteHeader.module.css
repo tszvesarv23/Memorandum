@@ -36,6 +36,7 @@
   text-transform: uppercase;
   color: var(--color-text-secondary);
   white-space: nowrap;
+  transform: translateY(6px);
 }
 
 .topActions {
