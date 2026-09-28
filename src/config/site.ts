@@ -37,6 +37,20 @@ export const utilityNav: readonly NavSection[] = [
   { slug: "transparencia", label: "Transparencia", href: "/transparencia" },
 ] as const;
 
+export interface SocialLink {
+  slug: string;
+  label: string;
+  href: string;
+  icon: "x" | "instagram" | "facebook";
+}
+
+/** Redes sociales — reemplazar con los enlaces reales cuando estén disponibles */
+export const socialLinks: readonly SocialLink[] = [
+  { slug: "x", label: "X (Twitter)", href: "https://x.com/memorandum", icon: "x" },
+  { slug: "instagram", label: "Instagram", href: "https://instagram.com/memorandum", icon: "instagram" },
+  { slug: "facebook", label: "Facebook", href: "https://facebook.com/memorandum", icon: "facebook" },
+] as const;
+
 /** Etiquetas legibles de tipo editorial — nunca ocultar opinión */
 export const articleTypeLabels: Record<string, string> = {
   NEWS: "Noticia",

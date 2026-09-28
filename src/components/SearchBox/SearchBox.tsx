@@ -4,9 +4,9 @@ import styles from "./SearchBox.module.css";
  * Buscador global — formulario GET hacia /buscar.
  * Server-rendered; la página de resultados usa PostgreSQL FTS.
  */
-export function SearchBox() {
+export function SearchBox({ wide = false }: { wide?: boolean }) {
   return (
-    <form action="/buscar" method="get" role="search" className={styles.form}>
+    <form action="/buscar" method="get" role="search" className={styles.form + (wide ? " " + styles.wide : "")}>
       <label htmlFor="site-search" className="visually-hidden">
         Buscar en Memorandum
       </label>
