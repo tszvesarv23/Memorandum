@@ -154,9 +154,9 @@
 
 .sectionLink:hover,
 .sectionLink:focus-visible {
-  color: #ffd6cf;
-  text-shadow: 0 0 0.75rem rgb(255 140 130 / 0.45);
-  background: rgb(255 170 160 / 0.15);
+  color: #000;
+  background: #fff;
+  text-shadow: none;
 }
 
 .barActions {
