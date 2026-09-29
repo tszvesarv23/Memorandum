@@ -110,8 +110,7 @@
   animation: marquee 40s linear infinite;
 }
 
-.sectionsTrack:hover,
-.sectionsTrack:focus-within {
+.sectionsTrack:hover {
   animation-play-state: paused;
 }
 
