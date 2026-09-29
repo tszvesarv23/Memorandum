@@ -106,6 +106,8 @@
 
 .sectionsTrack {
   display: flex;
+  align-items: stretch;
+  height: 2.5rem;
   width: max-content;
   animation: marquee 40s linear infinite;
 }
@@ -131,14 +133,16 @@
 
 .sectionsList {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: var(--space-1);
   flex-shrink: 0;
 }
 
 .sectionLink {
-  display: block;
-  padding: var(--space-1) var(--space-3);
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 var(--space-3);
   font-family: var(--font-ui);
   font-size: var(--text-sm);
   font-weight: 600;
@@ -148,15 +152,13 @@
   border-radius: var(--radius-sm);
   transition:
     color var(--duration-fast) var(--ease-out),
-    text-shadow var(--duration-fast) var(--ease-out),
     background var(--duration-fast) var(--ease-out);
 }
 
 .sectionLink:hover,
 .sectionLink:focus-visible {
   color: #000;
-  background: #fff;
-  text-shadow: none;
+  background: #f2f2f2;
 }
 
 .barActions {
