@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { Inter } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import { parseTheme } from "@/lib/theme";
+import { parseFontSize } from "@/lib/fontSize";
 import "./globals.css";
 
 const inter = Inter({
@@ -31,11 +32,13 @@ export default async function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   const cookieJar = await cookies();
   const theme = parseTheme(cookieJar.get("memorandum_theme")?.value);
+  const fontSize = parseFontSize(cookieJar.get("memorandum_font_size")?.value);
 
   return (
     <html
       lang="es"
       data-theme={theme}
+      data-font-size={fontSize}
       suppressHydrationWarning
       className={inter.variable}
     >

@@ -2,7 +2,9 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { mainNav, socialLinks } from "@/config/site";
 import { parseTheme } from "@/lib/theme";
+import { parseFontSize } from "@/lib/fontSize";
 import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
+import { FontSizeSlider } from "@/components/FontSizeSlider/FontSizeSlider";
 import { SearchToggle } from "./SearchToggle";
 import styles from "./SiteHeader.module.css";
 
@@ -82,6 +84,7 @@ const socialIconMap = {
 export async function SiteHeader() {
   const cookieJar = await cookies();
   const theme = parseTheme(cookieJar.get("memorandum_theme")?.value);
+  const fontSize = parseFontSize(cookieJar.get("memorandum_font_size")?.value);
 
   const logoSrc =
     theme === "dark"
@@ -107,6 +110,7 @@ export async function SiteHeader() {
           </Link>
 
           <div className={styles.topActions}>
+            <FontSizeSlider initialFontSize={fontSize} />
             <ThemeToggle initialTheme={theme} />
           </div>
         </div>
