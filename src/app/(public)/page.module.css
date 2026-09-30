@@ -37,7 +37,7 @@
 
 .heroLead {
   font-family: var(--font-body);
-  font-size: var(--text-lede);
+  font-size: var(--home-hero-lead-size);
   line-height: 1.55;
   color: var(--color-text-secondary);
   margin: 0 0 var(--space-5) 0;
@@ -131,7 +131,7 @@
 
 .featureLead {
   font-family: var(--font-body);
-  font-size: var(--text-body);
+  font-size: var(--home-feature-lead-size);
   line-height: var(--leading-body);
   color: var(--color-text-secondary);
   margin: 0 0 var(--space-4) 0;

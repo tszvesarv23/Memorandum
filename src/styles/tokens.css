@@ -167,23 +167,31 @@
   --shadow-overlay: 0 12px 40px rgb(0 0 0 / 0.7);
 }
 
-/* ── Tamaños de los títulos de Inicio según control P/M/G ─ */
+/* ── Tamaños de los títulos y textos de Inicio según control P/M/G ─ */
 html {
   --home-hero-title-size: var(--text-h2);
+  --home-hero-lead-size: var(--text-body);
   --home-feature-title-size: var(--text-h3);
+  --home-feature-lead-size: var(--text-sm);
 }
 
 html[data-font-size="g"] {
   --home-hero-title-size: var(--text-h1);
+  --home-hero-lead-size: var(--text-lede);
   --home-feature-title-size: var(--text-h2);
+  --home-feature-lead-size: var(--text-body);
 }
 
 html[data-font-size="m"] {
   --home-hero-title-size: var(--text-h2);
+  --home-hero-lead-size: var(--text-body);
   --home-feature-title-size: var(--text-h3);
+  --home-feature-lead-size: var(--text-sm);
 }
 
 html[data-font-size="p"] {
   --home-hero-title-size: var(--text-h3);
+  --home-hero-lead-size: var(--text-sm);
   --home-feature-title-size: var(--text-h4);
+  --home-feature-lead-size: var(--text-xs);
 }

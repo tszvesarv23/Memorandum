@@ -30,7 +30,11 @@ export function FontSizeSlider({ initialFontSize }: { initialFontSize: FontSize 
   const index = INDEX_BY_SIZE[fontSize];
 
   return (
-    <div className={styles.wrapper} title={LABEL_BY_SIZE[fontSize]}>
+    <div
+      className={styles.wrapper}
+      style={{ "--value": index } as React.CSSProperties}
+      title={LABEL_BY_SIZE[fontSize]}
+    >
       <input
         type="range"
         min={0}
@@ -44,7 +48,7 @@ export function FontSizeSlider({ initialFontSize }: { initialFontSize: FontSize 
         className={styles.slider}
         aria-label={LABEL_BY_SIZE[fontSize]}
       />
-      <span className={styles.badge} aria-hidden="true">
+      <span className={styles.thumb} aria-hidden="true">
         {fontSize.toUpperCase()}
       </span>
     </div>
