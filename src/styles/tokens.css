@@ -166,3 +166,24 @@
   --shadow-md: 0 4px 16px rgb(0 0 0 / 0.55);
   --shadow-overlay: 0 12px 40px rgb(0 0 0 / 0.7);
 }
+
+/* ── Tamaños de los títulos de Inicio según control P/M/G ─ */
+html {
+  --home-hero-title-size: var(--text-h2);
+  --home-feature-title-size: var(--text-h3);
+}
+
+html[data-font-size="g"] {
+  --home-hero-title-size: var(--text-h1);
+  --home-feature-title-size: var(--text-h2);
+}
+
+html[data-font-size="m"] {
+  --home-hero-title-size: var(--text-h2);
+  --home-feature-title-size: var(--text-h3);
+}
+
+html[data-font-size="p"] {
+  --home-hero-title-size: var(--text-h3);
+  --home-feature-title-size: var(--text-h4);
+}

@@ -2,27 +2,6 @@
   width: 100%;
 }
 
-/* Tamaños de los títulos principales controlados por data-font-size */
-:global(html) {
-  --home-hero-title-size: var(--text-h2);
-  --home-feature-title-size: var(--text-h3);
-}
-
-:global(html[data-font-size="g"]) {
-  --home-hero-title-size: var(--text-h1);
-  --home-feature-title-size: var(--text-h2);
-}
-
-:global(html[data-font-size="m"]) {
-  --home-hero-title-size: var(--text-h2);
-  --home-feature-title-size: var(--text-h3);
-}
-
-:global(html[data-font-size="p"]) {
-  --home-hero-title-size: var(--text-h3);
-  --home-feature-title-size: var(--text-h4);
-}
-
 /* ── Hero: texto a la izquierda, imagen a la derecha ─────── */
 .hero {
   width: 100%;
