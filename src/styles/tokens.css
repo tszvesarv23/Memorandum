@@ -170,7 +170,7 @@
 /* ── Escala tipográfica del contenido según control P/M/G ─ */
 /* M = mediano (predeterminado). G = grande (tamaño original). P = pequeño. */
 /* No redefinimos --text-sm, --text-xs ni --text-base para no tocar la cabecera. */
-html {
+html[data-font-size="m"] {
   --text-hero: clamp(2.4rem, 1.5rem + 4vw, 5rem);
   --text-h1: clamp(2rem, 1.35rem + 3.2vw, 4rem);
   --text-h2: clamp(1.6rem, 1.2rem + 2vw, 2.8rem);
