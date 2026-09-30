@@ -50,7 +50,7 @@ export function SearchToggle() {
               Escribe palabras clave y pulsa Enter para buscar artículos,
               documentos e historia.
             </p>
-            <SearchBox wide />
+            <SearchBox wide inverse />
           </div>
         </div>
       )}

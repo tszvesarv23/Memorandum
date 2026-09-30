@@ -51,3 +51,21 @@
   width: 100%;
   font-size: var(--text-base);
 }
+
+.inverse.form {
+  background: var(--color-text-inverse);
+  color: var(--color-ink);
+  border-color: rgb(255 255 255 / 0.25);
+}
+
+.inverse .input {
+  color: var(--color-ink);
+}
+
+.inverse .input::placeholder {
+  color: var(--color-muted);
+}
+
+.inverse .button {
+  color: var(--color-muted);
+}
