@@ -167,31 +167,35 @@
   --shadow-overlay: 0 12px 40px rgb(0 0 0 / 0.7);
 }
 
-/* ── Tamaños de los títulos y textos de Inicio según control P/M/G ─ */
+/* ── Escala tipográfica del contenido según control P/M/G ─ */
+/* M = mediano (predeterminado). G = grande (tamaño original). P = pequeño. */
+/* No redefinimos --text-sm, --text-xs ni --text-base para no tocar la cabecera. */
 html {
-  --home-hero-title-size: var(--text-h2);
-  --home-hero-lead-size: var(--text-body);
-  --home-feature-title-size: var(--text-h3);
-  --home-feature-lead-size: var(--text-sm);
+  --text-hero: clamp(2.4rem, 1.5rem + 4vw, 5rem);
+  --text-h1: clamp(2rem, 1.35rem + 3.2vw, 4rem);
+  --text-h2: clamp(1.6rem, 1.2rem + 2vw, 2.8rem);
+  --text-h3: clamp(1.2rem, 1rem + 1vw, 2rem);
+  --text-h4: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem);
+  --text-lede: clamp(1.1rem, 1rem + 0.5vw, 1.45rem);
+  --text-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
 }
 
 html[data-font-size="g"] {
-  --home-hero-title-size: var(--text-h1);
-  --home-hero-lead-size: var(--text-lede);
-  --home-feature-title-size: var(--text-h2);
-  --home-feature-lead-size: var(--text-body);
-}
-
-html[data-font-size="m"] {
-  --home-hero-title-size: var(--text-h2);
-  --home-hero-lead-size: var(--text-body);
-  --home-feature-title-size: var(--text-h3);
-  --home-feature-lead-size: var(--text-sm);
+  --text-hero: clamp(3rem, 1.8rem + 5vw, 6.5rem);
+  --text-h1: clamp(2.6rem, 1.7rem + 4vw, 5rem);
+  --text-h2: clamp(2rem, 1.45rem + 2.5vw, 3.2rem);
+  --text-h3: clamp(1.5rem, 1.25rem + 1.1vw, 2.25rem);
+  --text-h4: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+  --text-lede: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --text-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
 }
 
 html[data-font-size="p"] {
-  --home-hero-title-size: var(--text-h3);
-  --home-hero-lead-size: var(--text-sm);
-  --home-feature-title-size: var(--text-h4);
-  --home-feature-lead-size: var(--text-xs);
+  --text-hero: clamp(1.8rem, 1.2rem + 3vw, 3.5rem);
+  --text-h1: clamp(1.5rem, 1.2rem + 1.5vw, 2.4rem);
+  --text-h2: clamp(1.25rem, 1.1rem + 0.75vw, 1.8rem);
+  --text-h3: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem);
+  --text-h4: clamp(0.95rem, 0.9rem + 0.25vw, 1.15rem);
+  --text-lede: clamp(0.95rem, 0.9rem + 0.25vw, 1.1rem);
+  --text-body: clamp(0.9rem, 0.88rem + 0.1vw, 0.98rem);
 }
